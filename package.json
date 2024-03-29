@@ -1,0 +1,31 @@
+{
+  "name": "oooo-bridge-contracts",
+  "version": "1.0.0",
+  "description": "oooo bridge contracts",
+  "main": "hardhat.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@openzeppelin/hardhat-upgrades": "^3.0.2",
+    "chai": "^4.4.1",
+    "hardhat": "^2.19.5",
+    "hardhat-gas-reporter": "^1.0.10"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2",
+    "dotenv": "^16.4.1",
+    "ethereumjs-util": "^7.1.5",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.3.11"
+  }
+}
