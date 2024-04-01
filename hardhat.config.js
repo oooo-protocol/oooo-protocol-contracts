@@ -45,15 +45,7 @@ module.exports = {
         localhost: {
             url: `http://127.0.0.1:8545`,
             accounts: [process.env.LOCAL_ACCOUNT_PRIVATE_KEY],
-        },
-        merlinMainnet: {
-            url: `https://rpc.merlinchain.io`,
-            accounts: [process.env.MERLIN_MAINNET_ACCOUNT_PRIVATE_KEY],
-        },
-        bevmMainnet: {
-            url: `https://rpc-mainnet-1.bevm.io`,
-            accounts: [process.env.BEVM_MAINNET_ACCOUNT_PRIVATE_KEY],
-        },
+        }
     },
     // etherscan: {
     //     apiKey: {

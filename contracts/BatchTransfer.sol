@@ -2,11 +2,13 @@
 pragma solidity ^0.8.20;
 
 // Importing OpenZeppelin's Ownable contract to manage ownership
-import "@openzeppelin/contracts/access/Ownable.sol";
+// import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable2Step.sol";
 
-contract BatchTransfer is Ownable {
+contract BatchTransfer is Ownable2Step {
     // Event declaration for successful transfers
-    // event TransferSuccessful(address indexed to, uint256 amount);
+    event TransferSuccessful(address indexed to, uint256 amount);
+    event Withdrawal(address indexed to, uint256 amount);
 
     constructor() Ownable(msg.sender) {}
 
@@ -27,12 +29,16 @@ contract BatchTransfer is Ownable {
             require(success, "Transfer failed");
 
             // Emitting event for successful transfer
-            // emit TransferSuccessful(receivers[i], amounts[i]);
+            emit TransferSuccessful(receivers[i], amounts[i]);
         }
     }
 
     // Function to allow the owner to withdraw the contract's balance
     function withdraw() external onlyOwner {
-        payable(owner()).transfer(address(this).balance);
+        uint256 balance = address(this).balance;
+        (bool success, ) = payable(owner()).call{value: balance}("");
+
+        require(success, "Failed to withdraw");
+        emit Withdrawal(owner(), balance);
     }
 }
