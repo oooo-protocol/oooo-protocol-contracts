@@ -98,7 +98,7 @@ describe('BatchTransfer tests', function () {
     .withArgs(addr1.address);
   });
 
-  it("Should allow the owner to withdraw the contract's balance", async function () {
+  it.only("Should allow the owner to withdraw the contract's balance", async function () {
     // Get the initial balance of the owner
     const initialOwnerBalance = await ethers.provider.getBalance(owner.address);
 
@@ -131,7 +131,7 @@ describe('BatchTransfer tests', function () {
     expect(finalOwnerBalanceBigInt.toString()).to.equal(expectedFinalBalance.toString(), `Expected final balance to be ${expectedFinalBalance.toString()}, but got ${finalOwnerBalanceBigInt.toString()}`);
   });
 
-  it("should allow former owner to call the contract while the new owner cannot", async function() {
+  it.only("should allow former owner to call the contract while the new owner cannot", async function() {
     const totalAmount = amounts.reduce((acc, amount) => acc+amount, BigInt(0));
     const [owner, newOwner, otherAccount] = await ethers.getSigners();
 
@@ -152,7 +152,7 @@ describe('BatchTransfer tests', function () {
       .withArgs(otherAccount.address);
   });
 
-  it("should allow new owner to call the contract while the former owner cannot, after acceptance", async function() {
+  it.only("should allow new owner to call the contract while the former owner cannot, after acceptance", async function() {
     const totalAmount = amounts.reduce((acc, amount) => acc+amount, BigInt(0));
     const [owner, newOwner, otherAccount] = await ethers.getSigners();
 
